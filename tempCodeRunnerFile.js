@@ -1,0 +1,1 @@
+ NewBlock.preHash = this.getLatestBlock().hash
