@@ -40,6 +40,7 @@ class BlockChain {
         this.chain = [this.genesisBlock()]
         this.difficulty = 5// joto difficulty beshi hobe blockchain create hote toto smy lagbe
         this.pendingTransactions = [];
+        this.miningReward = 10
     }
 
     // create genesis block (1st block)
@@ -53,11 +54,14 @@ class BlockChain {
     createTransaction(transaction) {
         this.pendingTransactions.push(transaction);
     }
-    minePendingTransaction() {
+    minePendingTransaction(minerAddress) {
         let block = new Block(Date.now(), this.pendingTransactions)
         block.mineBlock(this.difficulty)
         this.chain.push(block)
-        this.pendingTransactions = []
+        this.pendingTransactions = [
+            new Transaction(null,minerAddress,this.miningReward)
+        ]
+        
     }
     // adding new Block in chain
     addBlock(NewBlock) {
@@ -103,7 +107,12 @@ class BlockChain {
 const blockChain = new BlockChain()
 blockChain.createTransaction(new Transaction('address1', 'address2', 200))
 blockChain.createTransaction(new Transaction('address2', 'address1', 150))
-blockChain.minePendingTransaction()
+blockChain.minePendingTransaction('majed-address')
 // console.log(blockChain);
-console.log("Balance :" + blockChain.getBalanceOfAddress("address1"));
-console.log("Balance :" + blockChain.getBalanceOfAddress("address2"));
+console.log("account one :" + blockChain.getBalanceOfAddress("address1"));
+console.log("account two :" + blockChain.getBalanceOfAddress("address2"));
+console.log("account three :" + blockChain.getBalanceOfAddress("majed-address"));
+// reward always given in 2nd mining 
+blockChain.minePendingTransaction('majed-address')
+console.log("miningReward for mining creator:" + blockChain.getBalanceOfAddress("majed-address"));
+console.log("account three :" + blockChain.getBalanceOfAddress("majed-address"));
