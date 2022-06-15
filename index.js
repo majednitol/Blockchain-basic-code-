@@ -38,7 +38,7 @@ class BlockChain {
     constructor() {
         // setting default 1st block in chain
         this.chain = [this.genesisBlock()]
-        this.difficulty = 5// joto difficulty beshi hobe blockchain create hote toto smy lagbe
+        this.difficulty = 5// joto difficulty beshi hobe blockchain create hote toto smy lagbe ar complex hash generate korbe 
         this.pendingTransactions = [];
         this.miningReward = 10
     }
@@ -59,9 +59,9 @@ class BlockChain {
         block.mineBlock(this.difficulty)
         this.chain.push(block)
         this.pendingTransactions = [
-            new Transaction(null,minerAddress,this.miningReward)
+            new Transaction(null, minerAddress, this.miningReward)
         ]
-        
+
     }
     // adding new Block in chain
     addBlock(NewBlock) {
@@ -109,10 +109,10 @@ blockChain.createTransaction(new Transaction('address1', 'address2', 200))
 blockChain.createTransaction(new Transaction('address2', 'address1', 150))
 blockChain.minePendingTransaction('majed-address')
 // console.log(blockChain);
-console.log("account one :" + blockChain.getBalanceOfAddress("address1"));
-console.log("account two :" + blockChain.getBalanceOfAddress("address2"));
-console.log("account three :" + blockChain.getBalanceOfAddress("majed-address"));
+console.log("account one :" + blockChain.getBalanceOfAddress("address1") + " ETH");
+console.log("account two :" + blockChain.getBalanceOfAddress("address2") + " ETH");
+console.log("account three :" + blockChain.getBalanceOfAddress("majed-address") + " ETH");
 // reward always given in 2nd mining 
 blockChain.minePendingTransaction('majed-address')
-console.log("miningReward for mining creator:" + blockChain.getBalanceOfAddress("majed-address"));
-console.log("account three :" + blockChain.getBalanceOfAddress("majed-address"));
+console.log("miningReward for mining creator:" + blockChain.getBalanceOfAddress("majed-address") + " ETH");
+console.log("account three :" + blockChain.getBalanceOfAddress("majed-address") + " ETH");
