@@ -38,7 +38,7 @@ class BlockChain {
     constructor() {
         // setting default 1st block in chain
         this.chain = [this.genesisBlock()]
-        this.difficulty = 5// joto difficulty beshi hobe blockchain create hote toto smy lagbe ar complex hash generate korbe 
+        this.difficulty = 7// joto difficulty beshi hobe blockchain create hote toto smy lagbe ar complex hash generate korbe 
         this.pendingTransactions = [];
         this.miningReward = 10
     }
